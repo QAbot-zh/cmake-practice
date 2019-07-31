@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/main.dir/main.c.o  -o main /home/zxy/myCode/cmake-practice/backup/cmake/t3/build/lib/libhello.a 

@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(t2 main.c)

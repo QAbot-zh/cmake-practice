@@ -1,0 +1,17 @@
+SET(LIBHELLO_SRC hello.c)
+ADD_LIBRARY(hello SHARED ${LIBHELLO_SRC})
+ADD_LIBRARY(hello_static STATIC ${LIBHELLO_SRC})
+#设置动态库版本号
+SET_TARGET_PROPERTIES(hello PROPERTIES VERSION 1.2 SOVERSION 1)
+
+#cmake不允许构建两个同名库，为了名字上的统一，可以修改其名字
+SET_TARGET_PROPERTIES(hello_static PROPERTIES OUTPUT_NAME hello)
+
+GET_TARGET_PROPERTY(OUTPUT_VALUE hello_static OUTPUT_NAME)
+MESSAGE(STATUS "This is the hello_static OUTPUT_NAME:" ${OUTPUT_VALUE})
+
+#设置将库安装到系统目录，方便其它程序使用
+INSTALL(TARGETS hello hello_static
+		LIBRARY DESTINATION lib
+		ARCHIVE DESTINATION lib)
+INSTALL(FILES hello.h DESTINATION include/hello)
